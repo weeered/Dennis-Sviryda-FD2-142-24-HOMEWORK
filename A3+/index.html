@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function palind(str) {
+				str = str.toLowerCase();
+				let strPARSED = "";
+				let strINV = "";
+				let answ = true;
+
+				for (let i = 0; i < str.length; i++)
+					str[i] === " " ||
+					str[i] === "," ||
+					str[i] === "." ||
+					str[i] === ";" ||
+					str[i] === ":" ||
+					str[i] === "!" ||
+					str[i] === "ё" ||
+					str[i] === "?" ||
+					str[i] === "ь" ||
+					str[i] === "ъ"
+						? str[i] === "ё"
+							? (strPARSED = strPARSED + "е")
+							: true
+						: (strPARSED = strPARSED + str[i]);
+
+				for (let i = strPARSED.length; i > 0; i--)
+					strINV = strINV + strPARSED.slice(i - 1, i);
+
+				for (let i = 0; i < strPARSED.length; i++) {
+					if (strPARSED[i] === strINV[i]) true;
+					else {
+						answ = false;
+						break;
+					}
+				}
+
+				return answ;
+			}
+			console.log(palind("маёбеам"));
+
+			console.log(palind("мабамеe"));
+
+			console.log(
+				palind(
+					"!аьЬЬЬ. БвАрао,,   ,,,,::рЪЪЪЪшъ...ъъ;ьь;..ХА!....ЛОХ!....... !Ж;;;хЬ..........о,л. ....аЪ,хШроььар  ,.,Ъъ аВБ;;.,а!"
+				)
+			);
+		</script>
+	</body>
+</html>
