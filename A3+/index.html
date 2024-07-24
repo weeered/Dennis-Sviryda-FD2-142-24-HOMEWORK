@@ -13,24 +13,24 @@
 				let strINV = "";
 				let answ = true;
 
-				for (let i = 0; i < str.length; i++) {
+				for (let i = 0; i < str.length; i++)
 					str[i] === " " ||
 					str[i] === "," ||
 					str[i] === "." ||
 					str[i] === ";" ||
 					str[i] === ":" ||
 					str[i] === "!" ||
-					str[i] === "?" ||
 					str[i] === "ё" ||
+					str[i] === "?" ||
 					str[i] === "ь" ||
 					str[i] === "ъ"
-						? true
+						? str[i] === "ё"
+							? (strPARSED = strPARSED + "е")
+							: true
 						: (strPARSED = strPARSED + str[i]);
-				}
 
-				for (let i = strPARSED.length; i > 0; i--) {
+				for (let i = strPARSED.length; i > 0; i--)
 					strINV = strINV + strPARSED.slice(i - 1, i);
-				}
 
 				for (let i = 0; i < strPARSED.length; i++) {
 					if (strPARSED[i] === strINV[i]) true;
@@ -39,11 +39,12 @@
 						break;
 					}
 				}
+
 				return answ;
 			}
-			console.log(palind("мабам"));
+			console.log(palind("маёбеам"));
 
-			console.log(palind("мабама"));
+			console.log(palind("мабаме"));
 
 			console.log(
 				palind(
